@@ -3,42 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Sister — Cheejaaa 🎀</title>
+<title>Happy Birthday Cheejaaa 🎂</title>
 
 <style>
     body {
         margin: 0;
         padding: 0;
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #ffe6f2, #ffd6e9, #ffedf5);
-        overflow: hidden;
-        color: #5b0033;
+        background: linear-gradient(120deg, #ffe2f0, #ffd4e8, #ffecf6);
+        overflow-x: hidden;
+        color: #5a0033;
         text-align: center;
     }
 
     h1 {
-        font-size: 38px;
+        font-size: 40px;
         margin-top: 20px;
         color: #d40078;
-        text-shadow: 0 4px 18px rgba(255, 0, 128, 0.3);
+        text-shadow: 0 4px 20px rgba(255, 0, 128, 0.3);
         font-weight: 700;
     }
 
     p {
         font-size: 18px;
-        opacity: 0.8;
-        margin-top: 5px;
+        opacity: 0.85;
+        margin-top: -4px;
         margin-bottom: 20px;
     }
 
+    /* LANDSCAPE WIDE SLIDESHOW */
     .slideshow {
-        width: 80%;
-        height: 460px;
+        width: 90%;
+        height: 380px;
         margin: auto;
-        border-radius: 16px;
+        border-radius: 18px;
         overflow: hidden;
         position: relative;
-        box-shadow: 0 8px 28px rgba(255, 0, 180, 0.3);
+        box-shadow: 0 10px 30px rgba(255, 0, 150, 0.3);
         background: #000;
     }
 
@@ -46,21 +47,22 @@
         position: absolute;
         inset: 0;
         opacity: 0;
-        transition: 1.3s ease;
+        transition: 1.2s ease;
     }
 
     .slide img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        transform: scale(1.08);
-        transition: 9s ease;
+        object-fit: cover;   /* FULL LANDSCAPE FIT */
+        object-position: center;
+        transition: 10s ease;
     }
 
     .slide.show {
         opacity: 1;
     }
 
+    /* CONTROLS */
     .controls {
         margin-top: 14px;
         display: flex;
@@ -76,35 +78,36 @@
         color: white;
         cursor: pointer;
         font-weight: bold;
-        box-shadow: 0 6px 14px rgba(255, 46, 149, 0.25);
+        box-shadow: 0 6px 18px rgba(255, 46, 149, 0.25);
     }
 
+    /* SPARKLE ANIMATION */
     .sparkle {
         position: fixed;
         pointer-events: none;
-        color: #ff4da6;
         font-size: 18px;
-        animation: rise 3.5s linear forwards;
+        color: #ff4da6;
         opacity: 0.9;
+        animation: rise 4s linear forwards;
     }
 
     @keyframes rise {
         0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-700px); opacity: 0; }
+        100% { transform: translateY(-750px); opacity: 0; }
     }
 
-    @media(max-width: 780px) {
-        .slideshow { height: 320px; width: 92%; }
-        h1 { font-size: 28px; }
+    @media (max-width: 768px) {
+        .slideshow { height: 250px; width: 94%; }
+        h1 { font-size: 26px; }
     }
 </style>
 </head>
 
 <body>
 
-<h1>🎀 Happy Birthday Sister — Cheejaaa 🎀</h1>
+<h1>🎂 Happy Birthday Cheejaaa 🎂</h1>
 
-<p>You are not just a sister… you’re my favorite person, my safe place, and my forever friend 💗</p>
+<p>You make life brighter, happier, softer — just by being in it 💗</p>
 
 <div class="slideshow" id="slideshow">
     <div class="slide show"><img src="photo1.jpg"></div>
@@ -144,14 +147,20 @@
     document.getElementById("next").onclick = () => { clearInterval(auto); nextSlide(); };
     document.getElementById("prev").onclick = () => { clearInterval(auto); prevSlide(); };
 
+    // MUSIC BUTTON
     const music = document.getElementById("music");
     const btn = document.getElementById("musicBtn");
     let playing = false;
 
     btn.onclick = async () => {
         if (!playing) {
-            try { await music.play(); btn.textContent = "Pause Music ⏸"; playing = true; }
-            catch { alert("Tap again to allow music!"); }
+            try {
+                await music.play();
+                btn.textContent = "Pause Music ⏸";
+                playing = true;
+            } catch {
+                alert("Tap Play Music again to allow audio!");
+            }
         } else {
             music.pause();
             btn.textContent = "Play Music ▶";
@@ -159,16 +168,17 @@
         }
     };
 
+    // SPARKLES
     function sparkle() {
         const s = document.createElement("div");
         s.className = "sparkle";
-        s.textContent = ["✨","💖","🌸","💗"][Math.floor(Math.random()*4)];
+        s.textContent = ["✨","💗","💖","🌸"][Math.floor(Math.random()*4)];
         s.style.left = Math.random() * window.innerWidth + "px";
         s.style.bottom = "0px";
         document.body.appendChild(s);
-        setTimeout(() => s.remove(), 3500);
+        setTimeout(() => s.remove(), 4000);
     }
-    setInterval(sparkle, 600);
+    setInterval(sparkle, 700);
 </script>
 
 </body>
