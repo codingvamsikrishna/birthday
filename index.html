@@ -14,17 +14,16 @@
         color: #4b2a63;
         text-align: center;
 
-        /* BLURRED BACKGROUND IMAGE */
+        /* CLEAR BACKGROUND IMAGE (NO BLUR) */
         background: url("bg.jpg") no-repeat center/cover;
-        backdrop-filter: blur(10px);
     }
 
+    /* REMOVED BLUR + WHITE OVERLAY (nothing here now) */
     body::before {
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(255, 255, 255, 0.45);
-        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0); /* fully transparent */
         z-index: -1;
     }
 
@@ -37,7 +36,6 @@
         text-shadow: 0 4px 18px rgba(100, 50, 160, .25);
     }
 
-    /* NEW UPDATED CAPTION */
     p {
         font-size: 17px;
         opacity: .9;
@@ -53,8 +51,7 @@
         margin: 28px auto;
         border-radius: 24px;
         overflow: hidden;
-        background: rgba(220, 200, 255, 0.5);
-        backdrop-filter: blur(6px);
+        background: rgba(220, 200, 255, 0.6);
         box-shadow: 0 10px 34px rgba(111, 63, 168, 0.25);
         border: 2px solid rgba(230, 210, 255, 0.9);
         position: relative;
@@ -80,7 +77,6 @@
         opacity: 1;
     }
 
-    /* CONTROLS */
     .controls {
         display: flex;
         justify-content: center;
@@ -99,7 +95,6 @@
         box-shadow: 0 6px 18px rgba(140, 92, 185, .25);
     }
 
-    /* LAVENDER SPARKLES */
     .sparkle {
         position: fixed;
         pointer-events: none;
@@ -107,17 +102,11 @@
         animation: floatUp 4.2s linear forwards;
         opacity: .9;
         color: #b992ff;
-        filter: drop-shadow(0 0 4px rgba(160,120,230,0.4));
     }
 
     @keyframes floatUp {
         0% { transform: translateY(0); opacity: 1; }
         100% { transform: translateY(-750px); opacity: 0; }
-    }
-
-    @media(max-width: 768px) {
-        .slideshow { width: 260px; height: 420px; }
-        h1 { font-size: 28px; }
     }
 </style>
 </head>
@@ -126,7 +115,7 @@
 
 <h1>💜 Happy Birthday Cheejaaa 💜</h1>
 
-<p>"Counting candles, not years" </p>
+<p>"Counting candles, not years"</p>
 
 <div class="slideshow" id="slideshow">
     <div class="slide show"><img src="photo1.jpg"></div>
@@ -166,7 +155,6 @@
     document.getElementById("next").onclick = () => { clearInterval(auto); nextSlide(); };
     document.getElementById("prev").onclick = () => { clearInterval(auto); prevSlide(); };
 
-    // MUSIC
     const music = document.getElementById("music");
     const btn = document.getElementById("musicBtn");
     let playing = false;
@@ -187,7 +175,6 @@
         }
     };
 
-    // Sparkles
     function sparkle() {
         const s = document.createElement("div");
         s.className = "sparkle";
