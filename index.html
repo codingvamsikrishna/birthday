@@ -3,42 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Cheejaaa 🎀</title>
+<title>Happy Birthday Cheejaaa 💜</title>
 
 <style>
     body {
         margin: 0;
         padding: 0;
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(160deg, #ffe8f3, #ffd6ea, #ffe8f5);
         overflow-x: hidden;
+        color: #4b2a63;
         text-align: center;
-        color: #68003f;
+
+        /* BLURRED BACKGROUND IMAGE */
+        background: url("bg.jpg") no-repeat center/cover;
+        backdrop-filter: blur(10px);
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(12px);
+        z-index: -1;
     }
 
     h1 {
-        margin-top: 20px;
-        font-size: 38px;
-        color: #ca007a;
+        margin-top: 25px;
+        font-size: 36px;
         font-weight: 700;
-        text-shadow: 0 5px 20px rgba(255, 0, 120, .25);
+        color: #6f3fa8;
+        letter-spacing: 1px;
+        text-shadow: 0 4px 18px rgba(100, 50, 160, .25);
     }
 
+    /* NEW UPDATED CAPTION */
     p {
-        font-size: 18px;
-        opacity: .85;
-        margin-top: -4px;
+        font-size: 17px;
+        opacity: .9;
+        margin-top: -6px;
+        color: #593c7a;
+        font-weight: 500;
     }
 
-    /* PORTRAIT SLIDESHOW */
+    /* PORTRAIT FRAME */
     .slideshow {
         width: 320px;
-        height: 500px; /* TALL PORTRAIT FRAME */
-        margin: 20px auto;
-        border-radius: 20px;
+        height: 500px;
+        margin: 28px auto;
+        border-radius: 24px;
         overflow: hidden;
-        background: #000;
-        box-shadow: 0 10px 32px rgba(255, 0, 140, 0.35);
+        background: rgba(220, 200, 255, 0.5);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 10px 34px rgba(111, 63, 168, 0.25);
+        border: 2px solid rgba(230, 210, 255, 0.9);
         position: relative;
     }
 
@@ -46,15 +64,16 @@
         position: absolute;
         inset: 0;
         opacity: 0;
-        transition: 1.5s ease;
+        transition: 1.4s ease;
     }
 
     .slide img {
-        height: 100%;
         width: 100%;
-        object-fit: cover;        /* PERFECT FOR PORTRAIT */
-        object-position: center;  /* Keeps face centered */
-        transition: 6s ease;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transform: scale(1.06);
+        transition: 8s ease;
     }
 
     .slide.show {
@@ -63,39 +82,40 @@
 
     /* CONTROLS */
     .controls {
-        margin-top: 12px;
         display: flex;
         justify-content: center;
         gap: 14px;
+        margin-bottom: 16px;
     }
 
     button {
-        background: #ff81b8;
+        background: #b78be6;
         border: none;
-        padding: 10px 16px;
-        color: #fff;
-        font-weight: 700;
+        color: white;
+        padding: 10px 18px;
+        font-weight: 600;
         border-radius: 10px;
         cursor: pointer;
-        box-shadow: 0 6px 18px rgba(255, 46, 149, .25);
+        box-shadow: 0 6px 18px rgba(140, 92, 185, .25);
     }
 
-    /* SPARKLES */
+    /* LAVENDER SPARKLES */
     .sparkle {
         position: fixed;
         pointer-events: none;
-        font-size: 18px;
-        animation: up 4s linear forwards;
+        font-size: 20px;
+        animation: floatUp 4.2s linear forwards;
         opacity: .9;
-        color: #ff4fa6;
+        color: #b992ff;
+        filter: drop-shadow(0 0 4px rgba(160,120,230,0.4));
     }
 
-    @keyframes up {
+    @keyframes floatUp {
         0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-700px); opacity: 0; }
+        100% { transform: translateY(-750px); opacity: 0; }
     }
 
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
         .slideshow { width: 260px; height: 420px; }
         h1 { font-size: 28px; }
     }
@@ -104,8 +124,9 @@
 
 <body>
 
-<h1>🎀 Happy Birthday Cheejaaa 🎀</h1>
-<p>You bring softness, kindness & magic everywhere you go 💗</p>
+<h1>💜 Happy Birthday Cheejaaa 💜</h1>
+
+<p>"Counting candles, not years" </p>
 
 <div class="slideshow" id="slideshow">
     <div class="slide show"><img src="photo1.jpg"></div>
@@ -145,7 +166,7 @@
     document.getElementById("next").onclick = () => { clearInterval(auto); nextSlide(); };
     document.getElementById("prev").onclick = () => { clearInterval(auto); prevSlide(); };
 
-    // MUSIC BUTTON
+    // MUSIC
     const music = document.getElementById("music");
     const btn = document.getElementById("musicBtn");
     let playing = false;
@@ -157,7 +178,7 @@
                 btn.textContent = "Pause Music ⏸";
                 playing = true;
             } catch {
-                alert("Tap Play again to allow music!");
+                alert("Tap again to allow audio!");
             }
         } else {
             music.pause();
@@ -166,17 +187,17 @@
         }
     };
 
-    // SPARKLES
+    // Sparkles
     function sparkle() {
         const s = document.createElement("div");
         s.className = "sparkle";
-        s.textContent = ["✨","💗","🌸","💖"][Math.floor(Math.random()*4)];
+        s.textContent = ["✨","💜","🌸","💖"][Math.floor(Math.random()*4)];
         s.style.left = Math.random() * window.innerWidth + "px";
         s.style.bottom = "0px";
         document.body.appendChild(s);
-        setTimeout(() => s.remove(), 4000);
+        setTimeout(() => s.remove(), 4200);
     }
-    setInterval(sparkle, 600);
+    setInterval(sparkle, 650);
 </script>
 
 </body>
